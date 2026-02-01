@@ -21,7 +21,7 @@ jobs:
           gradle init --type java-library --dsl gradle --quiet
           gradle build --quiet || true
       - name: Jar Dosyasini Hazirla
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Alchemist-Hile-Dosyasi
           path: "**/*.jar"
