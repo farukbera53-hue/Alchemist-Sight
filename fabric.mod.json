@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "alchemist-sight",
+  "version": "1.0.0",
+  "name": "Alchemist Sight",
+  "description": "Eğitsel ESP Modu",
+  "entrypoints": {
+    "client": [ "com.egitim.alchemist.AlchemistMod" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "minecraft": "1.20.1"
+  }
+}
