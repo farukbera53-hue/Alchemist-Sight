@@ -1,0 +1,27 @@
+name: Fabric Mod Derleyici
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Java 17 Kurulumu
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Klasör Yapısını Düzenle
+        run: |
+          mkdir -p src/main/java/com/egitim/alchemist
+          mkdir -p src/main/resources
+          cp AlchemistMod.java src/main/java/com/egitim/alchemist/
+          cp fabric.mod.json src/main/resources/
+      - name: Gradle Wrapper Kur
+        run: gradle wrapper --gradle-version 8.0
+      - name: Modu Derle
+        run: ./gradlew build
+      - name: Jar Dosyasini Hazirla
+        uses: actions/upload-artifact@v3
+        with:
+          name: Alchemist-Hile-Dosyasi
+          path: build/libs/*.jar
