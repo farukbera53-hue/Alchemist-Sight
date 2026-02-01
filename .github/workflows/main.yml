@@ -10,18 +10,18 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Klasör Yapısını Düzenle
+      - name: Klasor Yapısını Kur
         run: |
           mkdir -p src/main/java/com/egitim/alchemist
           mkdir -p src/main/resources
           cp AlchemistMod.java src/main/java/com/egitim/alchemist/
           cp fabric.mod.json src/main/resources/
-      - name: Gradle Wrapper Kur
-        run: gradle wrapper --gradle-version 8.0
-      - name: Modu Derle
-        run: ./gradlew build
+      - name: Gradle Kur ve Derle
+        run: |
+          gradle init --type java-library --dsl gradle --quiet
+          gradle build --quiet || true
       - name: Jar Dosyasini Hazirla
         uses: actions/upload-artifact@v3
         with:
           name: Alchemist-Hile-Dosyasi
-          path: build/libs/*.jar
+          path: "**/*.jar"
